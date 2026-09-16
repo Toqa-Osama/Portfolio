@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toqa Osama | Computer Science & Data Engineering Portfolio</title>
+  
+  <!-- Google Fonts: Inter, Cairo & IBM Plex Sans Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Allowlisted Tailwind CSS -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            light: {
+              bg: '#F8FAFC',
+              card: '#FFFFFF',
+              cardBorder: '#E2E8F0',
+              header: '#0F172A',
+              body: '#334155',
+              muted: '#475569',
+              badgeBg: '#EDE9FE',
+              badgeText: '#5B21B6',
+              badgeBorder: '#DDD6FE',
+              accent: '#7C3AED',
+              accentDark: '#6D28D9',
+            },
+            dark: {
+              bg: '#0B0B10',
+              bgSecondary: '#0F0E17',
+              card: '#171523',
+              cardBorder: '#28243D',
+              cardHover: '#1E1B2E',
+              header: '#FFFFFF',
+              body: '#CBD5E1',
+              muted: '#94A3B8',
+              accent: '#8B5CF6',
+              accentViolet: '#7C3AED',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            arabic: ['Cairo', 'IBM Plex Sans Arabic', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-sm': '0 0 15px -3px rgba(124, 58, 237, 0.25)',
+            'glow-md': '0 0 25px -4px rgba(124, 58, 237, 0.35)',
+            'glow-lg': '0 0 35px -5px rgba(124, 58, 237, 0.45)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    html[dir="rtl"] {
+      font-family: 'Cairo', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    }
+    .text-gradient-purple {
+      background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #8B5CF6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #28243D;
+      border-radius: 9999px;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #8B5CF6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #7C3AED;
+    }
+  </style>
+</head>
+<body class="min-h-screen transition-colors duration-300 antialiased selection:bg-purple-600 selection:text-white bg-[#0B0B10] text-slate-100 dark:bg-[#0B0B10] dark:text-slate-100">
+
+  <!-- Floating Global Toast -->
+  <div id="toast-banner" class="fixed bottom-6 start-1/2 -translate-x-1/2 z-50 hidden items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#0F172A] text-white dark:bg-white dark:text-[#0F172A] shadow-2xl border border-purple-500/40 transition-all duration-300">
+    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-text" class="text-sm font-bold">Copied to clipboard!</span>
+  </div>
+
+  <!-- Ambient background glow elements -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-purple-600/10 dark:bg-purple-600/15 rounded-full blur-[120px]"></div>
+    <div class="absolute top-1/2 -right-32 w-96 h-96 bg-indigo-600/10 dark:bg-indigo-600/15 rounded-full blur-[120px]"></div>
+    <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-violet-600/10 dark:bg-violet-600/15 rounded-full blur-[120px]"></div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 dark:bg-[#0B0B10]/90 bg-[#F8FAFC]/95 backdrop-blur-md border-b dark:border-[#28243D] border-[#E2E8F0] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        
+        <!-- Brand -->
+        <a href="#hero" class="flex items-center gap-2.5 group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span id="nav-brand" class="font-bold text-lg tracking-tight dark:text-white text-[#0F172A] group-hover:text-purple-600 transition-colors">Toqa Osama</span>
+            <span class="text-[11px] font-semibold tracking-wide uppercase dark:text-purple-400 text-purple-700 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Software & Data
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-1 lg:gap-1.5 px-3 py-1.5 rounded-full dark:bg-[#171523]/95 bg-white border dark:border-[#28243D] border-[#E2E8F0] shadow-sm backdrop-blur-sm">
+          <a href="#hero" id="nav-link-about" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">About</a>
+          <a href="#education" id="nav-link-education" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">Education</a>
+          <a href="#experience" id="nav-link-experience" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">Experience</a>
+          <a href="#technical-practice" id="nav-link-practice" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">Practice</a>
+          <a href="#skills" id="nav-link-skills" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">Skills</a>
+          <a href="#certifications" id="nav-link-certifications" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">Certifications</a>
+          <a href="#contact" id="nav-link-contact" class="px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full dark:text-[#CBD5E1] text-[#334155] hover:text-white dark:hover:text-white hover:bg-gradient-to-r hover:from-[#6D28D9] hover:to-[#7C3AED] transition-all">Contact</a>
+        </nav>
+
+        <!-- Controls: Language Toggle & Theme Switcher -->
+        <div class="flex items-center gap-2.5">
+          <!-- Language Toggle Button -->
+          <button id="lang-btn" onclick="toggleLanguage()" class="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all dark:bg-[#171523] bg-white border dark:border-[#28243D] border-[#E2E8F0] dark:text-white text-[#0F172A] hover:border-purple-500 shadow-sm" title="Toggle Language">
+            <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span id="lang-btn-text" class="tracking-wider">العربية</span>
+          </button>
+
+          <!-- Theme Switcher Button -->
+          <button id="theme-btn" onclick="toggleTheme()" class="p-2 rounded-xl transition-all dark:bg-[#171523] bg-white border dark:border-[#28243D] border-[#E2E8F0] text-[#0F172A] dark:text-yellow-400 hover:border-purple-500 shadow-sm" title="Toggle Light / Dark Mode">
+            <svg id="theme-icon-sun" class="w-4 h-4 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <svg id="theme-icon-moon" class="w-4 h-4 text-[#5B21B6] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          </button>
+
+          <!-- Header CTA -->
+          <a href="#contact" id="header-cta" class="hidden xl:flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-[#6D28D9] to-[#7C3AED] hover:from-[#5B21B6] hover:to-[#6D28D9] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all">
+            <span id="header-cta-text">Get in Touch</span>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative pt-24">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Column 1: Typography, Role Badge, Actions (7 cols) -->
+          <div class="lg:col-span-7 space-y-6 text-start">
+            
+            <!-- Badges -->
+            <div class="flex flex-wrap items-center gap-2.5">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] shadow-sm">
+                <svg class="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#A78BFA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+                <span id="hero-role-badge">Computer Science Student @ Cairo University | Aspiring Data Engineer</span>
+              </div>
+
+              <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] text-[#0F172A] dark:text-[#CBD5E1] shadow-sm">
+                <svg class="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#A78BFA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span id="hero-location">Giza, Egypt</span>
+              </div>
+            </div>
+
+            <!-- Name & High-Impact Headline -->
+            <div class="space-y-3">
+              <p id="hero-greeting" class="text-xs sm:text-sm uppercase tracking-widest font-bold text-[#5B21B6] dark:text-[#A78BFA]">
+                Hello, I'm
+              </p>
+              <h1 id="hero-name" class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#0F172A] dark:text-white leading-[1.12]">
+                Toqa Osama
+              </h1>
+              <div id="hero-headline" class="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-[#6D28D9] via-[#7C3AED] to-[#8B5CF6] bg-clip-text text-transparent leading-snug">
+                Computer Science & Data Engineering
+              </div>
+            </div>
+
+            <!-- Bio -->
+            <p id="hero-bio" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1] leading-relaxed max-w-2xl font-normal">
+              Passionate Computer Science student with a solid foundation in Python, C++, and algorithmic problem-solving. Currently diving deep into Data Engineering architectures and pipelines through DEPI, with a focus on building efficient, data-driven solutions.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#contact" id="btn-get-in-touch" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-[#6D28D9] to-[#7C3AED] hover:from-[#5B21B6] hover:to-[#6D28D9] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all">
+                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                <span id="hero-action-contact">Get in Touch</span>
+                <svg class="w-3.5 h-3.5 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>
+              </a>
+
+              <a href="https://linkedin.com/in/toqa-osama-software-engineer/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl font-bold text-sm bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] text-[#0F172A] dark:text-white hover:border-[#6D28D9] dark:hover:border-[#8B5CF6] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-sm">
+                <svg class="w-4 h-4 text-[#0A66C2] fill-[#0A66C2]" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+                <span id="hero-action-linkedin">Connect on LinkedIn</span>
+              </a>
+
+              <button onclick="copyToClipboard('toqa.osama.dev@gmail.com', 'email')" type="button" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-2xl font-semibold text-sm transition-all border bg-[#EDE9FE]/70 hover:bg-[#EDE9FE] dark:bg-[#171523] border-[#DDD6FE] dark:border-[#28243D] text-[#5B21B6] dark:text-[#CBD5E1] hover:border-[#7C3AED]" title="Copy email">
+                <svg class="w-4 h-4 text-[#6D28D9] dark:text-[#A78BFA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                <span id="hero-action-email">Copy Email</span>
+              </button>
+            </div>
+
+            <!-- Highlights Micro-bar -->
+            <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-3.5 rounded-2xl bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA]">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                </div>
+                <div>
+                  <p class="text-[11px] uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-bold">University</p>
+                  <p class="text-xs font-bold text-[#0F172A] dark:text-white truncate">FCAI - Cairo Univ</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA]">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+                </div>
+                <div>
+                  <p class="text-[11px] uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-bold">Track</p>
+                  <p class="text-xs font-bold text-[#0F172A] dark:text-white truncate">Data Engineering (DEPI)</p>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA]">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg>
+                </div>
+                <div>
+                  <p class="text-[11px] uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-bold">Foundation</p>
+                  <p class="text-xs font-bold text-[#0F172A] dark:text-white truncate">Python • C++ • OOP</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Column 2: Terminal Window (5 cols) -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative rounded-2xl overflow-hidden bg-[#171523] border border-[#28243D] shadow-2xl transition-all duration-300 hover:border-purple-500/50 group text-white">
+              <!-- Terminal Header -->
+              <div class="px-4 py-3 bg-[#0F0E17] border-b border-[#28243D] flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs font-mono text-[#CBD5E1]">
+                  <svg class="w-3.5 h-3.5 text-[#A78BFA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                  <span>toqa_profile.py</span>
+                </div>
+                <div class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1E1A33] text-[#A78BFA] border border-[#3B3258]">
+                  Python 3.12
+                </div>
+              </div>
+
+              <!-- Code Content -->
+              <div class="p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto text-start" style="direction: ltr;">
+                <p id="term-comment" class="text-slate-400 italic"># Building reliable pipelines & algorithmic solutions</p>
+                <div class="mt-2 space-y-1">
+                  <p><span class="text-purple-400 font-semibold">class</span> <span class="text-amber-300 font-bold">DataSoftwareEngineer</span>:</p>
+                  <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-sky-300">__init__</span>(self):</p>
+                  <p class="pl-8">self.name = <span class="text-emerald-400">"Toqa Osama"</span></p>
+                  <p class="pl-8">self.university = <span class="text-emerald-400">"Cairo University (FCAI)"</span></p>
+                  <p class="pl-8">self.languages = [<span class="text-emerald-400">"Python"</span>, <span class="text-emerald-400">"C++"</span>]</p>
+                  <p class="pl-8">self.current_track = <span class="text-emerald-400">"Data Engineering (DEPI)"</span></p>
+                  <p class="pl-8">self.focus = [<span class="text-emerald-400">"Pipelines"</span>, <span class="text-emerald-400">"Algorithms"</span>, <span class="text-emerald-400">"OOP"</span>]</p>
+                  <p class="pl-4 pt-2"><span class="text-purple-400">def</span> <span class="text-sky-300">build_pipeline</span>(self, data_source):</p>
+                  <p id="term-status-comment" class="pl-8 text-slate-400 italic"># Actively architecting data workflows</p>
+                  <p class="pl-8"><span class="text-purple-400">return</span> <span class="text-indigo-300">orchestrator</span>.process(data_source)</p>
+                </div>
+              </div>
+
+              <!-- Terminal Footer -->
+              <div class="px-5 py-3 bg-[#0F0E17] border-t border-[#28243D] flex items-center justify-between">
+                <div class="flex items-center gap-2 text-xs font-mono text-[#CBD5E1]">
+                  <span class="text-emerald-400">➜</span>
+                  <span class="text-purple-400">~</span>
+                  <span>status --active</span>
+                </div>
+                <span class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Ready to Collaborate
+                </span>
+              </div>
+            </div>
+
+            <div class="absolute -bottom-4 -left-4 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#171523] border border-[#DDD6FE] dark:border-[#3B3258] shadow-md">
+              <svg class="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#A78BFA] animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path></svg>
+              <span class="text-xs font-bold text-[#0F172A] dark:text-white">Problem Solver</span>
+            </div>
+            <div class="absolute -top-4 -right-4 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#171523] border border-[#DDD6FE] dark:border-[#3B3258] shadow-md">
+              <svg class="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#A78BFA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+              <span class="text-xs font-bold text-[#0F172A] dark:text-white">Data Pipelines</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="h-px bg-gradient-to-r from-transparent via-[#6D28D9]/20 to-transparent"></div></div>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 lg:py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-start max-w-2xl mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] mb-3">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            <span id="edu-tag">Academic Background</span>
+          </div>
+          <h2 id="edu-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white mb-3">Education</h2>
+          <p id="edu-subtitle" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1]">Rigorous foundation in computer science principles and mathematical theory.</p>
+        </div>
+
+        <div class="rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group">
+          <div class="relative z-10 flex flex-col md:flex-row md:items-start justify-between gap-6">
+            <div class="space-y-5 max-w-3xl">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] flex-shrink-0 flex items-center justify-center text-white shadow-sm">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                </div>
+                <div>
+                  <h3 id="edu-degree" class="text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-white">Bachelor's Degree in Computer Science</h3>
+                  <p id="edu-inst" class="text-sm sm:text-base font-semibold text-[#5B21B6] dark:text-[#A78BFA] mt-0.5">Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU)</p>
+                </div>
+              </div>
+
+              <div class="pt-2 space-y-3">
+                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-[#CBD5E1]">
+                  <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                  <span id="edu-coursework-title">Key Coursework Highlights</span>
+                </div>
+                <div id="edu-coursework-list" class="flex flex-wrap gap-2.5">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <div class="flex md:flex-col items-start md:items-end justify-between md:justify-start gap-3 border-t md:border-t-0 pt-4 md:pt-0 border-[#E2E8F0] dark:border-[#28243D]">
+              <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/25">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="edu-status">In Progress</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#334155] dark:text-[#CBD5E1]">
+                <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span id="edu-period">Sept 2025 – Present</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="h-px bg-gradient-to-r from-transparent via-[#6D28D9]/20 to-transparent"></div></div>
+
+    <!-- Professional Experience Section -->
+    <section id="experience" class="py-16 lg:py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-start max-w-2xl mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] mb-3">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <span id="exp-tag">Professional Growth</span>
+          </div>
+          <h2 id="exp-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white mb-3">Professional Training & Experience</h2>
+          <p id="exp-subtitle" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1]">Hands-on technical development through elite national development programs.</p>
+        </div>
+
+        <div class="rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group">
+          <div class="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-6 pb-6 border-b border-[#E2E8F0] dark:border-[#28243D]">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] flex-shrink-0 flex items-center justify-center text-white shadow-sm">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2.5 mb-1">
+                  <h3 id="exp-role" class="text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-white">Data Engineering Trainee</h3>
+                  <span id="exp-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258]">Active Cohort</span>
+                </div>
+                <p id="exp-org" class="text-base font-bold text-[#5B21B6] dark:text-[#A78BFA]">Digital Egypt Pioneers Initiative (DEPI)</p>
+                <p id="exp-type" class="text-xs font-semibold text-[#475569] dark:text-[#94A3B8] mt-1">Intensive Training Track</p>
+              </div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl self-start bg-[#F8FAFC] dark:bg-[#12101D] border border-[#E2E8F0] dark:border-[#28243D] text-xs sm:text-sm font-semibold text-[#0F172A] dark:text-[#CBD5E1]">
+              <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span id="exp-period">July 2026 – Present</span>
+            </div>
+          </div>
+
+          <div class="pt-6 space-y-4">
+            <p id="exp-desc" class="text-sm sm:text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed font-normal"></p>
+
+            <div class="space-y-3 pt-2">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-[#CBD5E1]">
+                <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg>
+                <span id="exp-focus-title">Key Focus Areas & Practical Training</span>
+              </div>
+              <div id="exp-highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="h-px bg-gradient-to-r from-transparent via-[#6D28D9]/20 to-transparent"></div></div>
+
+    <!-- Technical Practice Section -->
+    <section id="technical-practice" class="py-16 lg:py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-start max-w-2xl mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] mb-3">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <span id="tp-tag">Engineering Disciplines</span>
+          </div>
+          <h2 id="tp-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white mb-3">Technical Practice</h2>
+          <p id="tp-subtitle" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1]">Hands-on programming mastery, algorithmic problem-solving, and clean software architecture.</p>
+        </div>
+
+        <div class="rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden group">
+          <div class="relative z-10 space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E2E8F0] dark:border-[#28243D]">
+              <div class="flex items-center gap-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] flex-shrink-0 flex items-center justify-center text-white shadow-sm">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"></path><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"></path></svg>
+                </div>
+                <div>
+                  <h3 id="tp-card-title" class="text-xl sm:text-2xl font-bold text-[#0F172A] dark:text-white">Core Programming & Algorithmics (Python & C++)</h3>
+                  <p class="text-xs font-semibold text-[#5B21B6] dark:text-[#A78BFA] mt-0.5">Python 3.12+ • Modern C++ (OOP & STL) • Algorithmic Paradigms</p>
+                </div>
+              </div>
+              <div class="self-start sm:self-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258]">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="16" x="4" y="4" rx="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect></svg>
+                <span id="tp-card-badge">Core Competency</span>
+              </div>
+            </div>
+
+            <p id="tp-desc" class="text-sm sm:text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed font-normal"></p>
+
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-[#CBD5E1]">
+                <svg class="w-4 h-4 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg>
+                <span id="tp-highlights-title">Key Technical Highlights</span>
+              </div>
+              <div id="tp-highlights-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-[#E2E8F0] dark:border-[#28243D] flex flex-wrap items-center gap-2">
+              <span id="tp-tags-label" class="text-xs font-bold text-[#0F172A] dark:text-[#CBD5E1] me-2">Stack Tags:</span>
+              <div id="tp-pills-container" class="flex flex-wrap items-center gap-2">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="h-px bg-gradient-to-r from-transparent via-[#6D28D9]/20 to-transparent"></div></div>
+
+    <!-- Categorized Skills Section -->
+    <section id="skills" class="py-16 lg:py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-start max-w-2xl mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] mb-3">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            <span id="skills-tag">Capabilities</span>
+          </div>
+          <h2 id="skills-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white mb-3">Categorized Skills</h2>
+          <p id="skills-subtitle" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1]">Core programming languages, engineering methodologies, development tools, and soft strengths.</p>
+        </div>
+
+        <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="h-px bg-gradient-to-r from-transparent via-[#6D28D9]/20 to-transparent"></div></div>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-16 lg:py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-start max-w-2xl mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] mb-3">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span id="certs-tag">Credentials</span>
+          </div>
+          <h2 id="certs-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white mb-3">Certifications</h2>
+          <p id="certs-subtitle" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1]">Formal achievements recognized by national technology and cyber initiatives.</p>
+        </div>
+
+        <div id="certs-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="h-px bg-gradient-to-r from-transparent via-[#6D28D9]/20 to-transparent"></div></div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 lg:py-24 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-start max-w-2xl mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258] mb-3">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span id="contact-tag">Get in Touch</span>
+          </div>
+          <h2 id="contact-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white mb-3">Contact</h2>
+          <p id="contact-subtitle" class="text-base sm:text-lg text-[#334155] dark:text-[#CBD5E1]">Direct communication channels for internship opportunities, technical discussions, and collaborations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Email Card -->
+          <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-2xl bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA] flex items-center justify-center group-hover:scale-105 transition-transform border border-[#DDD6FE] dark:border-[#3B3258]">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              </div>
+              <div>
+                <p id="contact-email-lbl" class="text-xs uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-bold">Email Address</p>
+                <a href="mailto:toqa.osama.dev@gmail.com" class="text-base sm:text-lg font-bold text-[#0F172A] dark:text-white hover:text-purple-600 dark:hover:text-[#A78BFA] transition-colors break-all">toqa.osama.dev@gmail.com</a>
+              </div>
+            </div>
+            <div class="pt-6 mt-4 border-t border-[#E2E8F0] dark:border-[#28243D] flex items-center gap-2">
+              <button onclick="copyToClipboard('toqa.osama.dev@gmail.com', 'email')" type="button" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all border bg-[#EDE9FE] text-[#5B21B6] border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#CBD5E1] dark:border-[#3B3258] hover:border-purple-400">
+                <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                <span class="copy-email-btn-text">Copy</span>
+              </button>
+              <a href="mailto:toqa.osama.dev@gmail.com" class="py-2.5 px-3.5 rounded-xl text-xs font-bold bg-gradient-to-r from-[#6D28D9] to-[#7C3AED] hover:from-[#5B21B6] hover:to-[#6D28D9] text-white flex items-center justify-center gap-1 shadow-sm">
+                <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span id="contact-email-btn-text">Send Email</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Phone Card -->
+          <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-2xl bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA] flex items-center justify-center group-hover:scale-105 transition-transform border border-[#DDD6FE] dark:border-[#3B3258]">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <p id="contact-phone-lbl" class="text-xs uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-bold">Phone Number</p>
+                <a href="tel:+201043112858" class="text-base sm:text-lg font-bold text-[#0F172A] dark:text-white hover:text-purple-600 dark:hover:text-[#A78BFA] transition-colors font-mono" style="direction: ltr;">+20 1043112858</a>
+              </div>
+            </div>
+            <div class="pt-6 mt-4 border-t border-[#E2E8F0] dark:border-[#28243D] flex items-center gap-2">
+              <button onclick="copyToClipboard('+20 1043112858', 'phone')" type="button" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all border bg-[#EDE9FE] text-[#5B21B6] border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#CBD5E1] dark:border-[#3B3258] hover:border-purple-400">
+                <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                <span class="copy-phone-btn-text">Copy</span>
+              </button>
+              <a href="tel:+201043112858" class="py-2.5 px-3.5 rounded-xl text-xs font-bold bg-[#F8FAFC] dark:bg-[#12101D] border border-[#E2E8F0] dark:border-[#28243D] text-[#0F172A] dark:text-white hover:border-purple-500 flex items-center justify-center gap-1">
+                <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span id="contact-call-btn-text">Call Direct</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- LinkedIn Card -->
+          <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform border border-blue-200 dark:border-blue-900/40">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path></svg>
+              </div>
+              <div>
+                <p id="contact-linkedin-lbl" class="text-xs uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] font-bold">LinkedIn Profile</p>
+                <p class="text-base sm:text-lg font-bold text-[#0F172A] dark:text-white truncate">toqa-osama-software-engineer</p>
+              </div>
+            </div>
+            <div class="pt-6 mt-4 border-t border-[#E2E8F0] dark:border-[#28243D]">
+              <a href="https://linkedin.com/in/toqa-osama-software-engineer/" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 flex items-center justify-center gap-2 shadow-sm transition-all">
+                <span id="contact-linkedin-btn-text">View Profile</span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#E2E8F0] dark:border-[#28243D] py-12 bg-[#F8FAFC] dark:bg-[#0B0B10] transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] flex items-center justify-center text-white shadow-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <div>
+            <p class="font-bold text-base text-[#0F172A] dark:text-white">Toqa Osama</p>
+            <p class="text-xs font-semibold text-[#475569] dark:text-[#94A3B8]">Computer Science • Data Engineering</p>
+          </div>
+        </div>
+
+        <p class="text-xs font-medium text-[#334155] dark:text-[#CBD5E1] text-center flex items-center justify-center gap-1.5 flex-wrap">
+          <span id="footer-rights">© 2026 Toqa Osama. All rights reserved.</span>
+          <span class="hidden sm:inline">•</span>
+          <span id="footer-built">Designed & developed with React, Tailwind CSS, & Lucide Icons.</span>
+        </p>
+
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] text-[#0F172A] dark:text-[#CBD5E1] hover:border-purple-500 shadow-sm transition-all">
+          <span id="footer-back-to-top">Back to Top</span>
+          <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"></path></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Translation & Interactive Scripts -->
+  <script>
+    const translations = {
+      en: {
+        nav: {
+          brand: 'Toqa Osama',
+          about: 'About',
+          education: 'Education',
+          experience: 'Experience',
+          practice: 'Practice',
+          skills: 'Skills',
+          certifications: 'Certifications',
+          contact: 'Contact',
+          cta: 'Get in Touch'
+        },
+        hero: {
+          roleBadge: 'Computer Science Student @ Cairo University | Aspiring Data Engineer',
+          location: 'Giza, Egypt',
+          greeting: "Hello, I'm",
+          name: 'Toqa Osama',
+          headline: 'Computer Science & Data Engineering',
+          bio: 'Passionate Computer Science student with a solid foundation in Python, C++, and algorithmic problem-solving. Currently diving deep into Data Engineering architectures and pipelines through DEPI, with a focus on building efficient, data-driven solutions.',
+          getInTouch: 'Get in Touch',
+          connectLinkedIn: 'Connect on LinkedIn',
+          copyEmail: 'Copy Email',
+          comment: '# Building reliable pipelines & algorithmic solutions',
+          statusComment: '# Actively architecting data workflows'
+        },
+        edu: {
+          tag: 'Academic Background',
+          title: 'Education',
+          subtitle: 'Rigorous foundation in computer science principles and mathematical theory.',
+          degree: "Bachelor's Degree in Computer Science",
+          institution: 'Faculty of Computers and Artificial Intelligence, Cairo University (FCAI-CU)',
+          period: 'Sept 2025 – Present',
+          status: 'In Progress',
+          courseworkTitle: 'Key Coursework Highlights',
+          coursework: ['Data Structures', 'Programming Fundamentals', 'Object-Oriented Programming (OOP)', 'Discrete Mathematics']
+        },
+        exp: {
+          tag: 'Professional Growth',
+          title: 'Professional Training & Experience',
+          subtitle: 'Hands-on technical development through elite national development programs.',
+          role: 'Data Engineering Trainee',
+          badge: 'Active Cohort',
+          org: 'Digital Egypt Pioneers Initiative (DEPI)',
+          type: 'Intensive Training Track',
+          period: 'July 2026 – Present',
+          desc: 'Selected for the prestigious government-backed digital skilling initiative focused on equipping top university students with real-world data engineering mastery and enterprise-scale competencies.',
+          focusTitle: 'Key Focus Areas & Practical Training',
+          highlights: [
+            'Data engineering pipelines, workflow orchestration, and database concepts.',
+            'Hands-on practice in data manipulation and modern software development practices.',
+            'Strengthening algorithmic thinking through structured problem-solving.'
+          ]
+        },
+        tp: {
+          tag: 'Engineering Disciplines',
+          title: 'Technical Practice',
+          subtitle: 'Hands-on programming mastery, algorithmic problem-solving, and clean software architecture.',
+          cardTitle: 'Core Programming & Algorithmics (Python & C++)',
+          badge: 'Core Competency',
+          desc: 'Systematic implementation of algorithmic strategies, performance-focused code design, and data-centric problem breakdown using modern Python and C++.',
+          highlightsTitle: 'Key Technical Highlights',
+          highlights: [
+            'Practical application of Object-Oriented Programming (OOP) principles including abstraction, encapsulation, inheritance, and polymorphism.',
+            'Design and implementation of modular functions, clean architecture, and readable codebases.',
+            'Mastery of control structures, computational logic, recursion, and complexity optimization.',
+            'Systematic code debugging, exception handling, and edge-case validation across diverse problem sets.'
+          ],
+          tagsLabel: 'Stack Tags:',
+          pills: ['Python', 'C++', 'OOP Paradigms', 'Data Structures', 'Algorithmic Logic', 'Unit Debugging']
+        },
+        skills: {
+          tag: 'Capabilities',
+          title: 'Categorized Skills',
+          subtitle: 'Core programming languages, engineering methodologies, development tools, and soft strengths.',
+          groups: [
+            { category: 'Languages', skills: ['Python', 'C++'] },
+            { category: 'Engineering Concepts', skills: ['Object-Oriented Programming (OOP)', 'Data Engineering Fundamentals', 'Problem Solving', 'Code Debugging'] },
+            { category: 'Tools & Environment', skills: ['VS Code', 'Jupyter Notebook', 'Git / GitHub'] },
+            { category: 'Soft Strengths', skills: ['Analytical Thinking', 'Fast Learning', 'Clear Technical Communication', 'Attention to Detail'] }
+          ]
+        },
+        certs: {
+          tag: 'Credentials',
+          title: 'Certifications',
+          subtitle: 'Formal achievements recognized by national technology and cyber initiatives.',
+          items: [
+            {
+              title: 'Level 2 General Track',
+              track: 'Digital Egypt Cubs Initiative (DECI)',
+              issuer: 'Ministry of Communications and Information Technology (MCIT)',
+              period: 'Nov 2022 – Jul 2023',
+              badge: 'Completed with Excellence'
+            },
+            {
+              title: 'Level 3 Cybersecurity Track',
+              track: 'Digital Egypt Cubs Initiative (DECI)',
+              issuer: 'Ministry of Communications and Information Technology (MCIT)',
+              period: 'Nov 2023 – Jul 2024',
+              badge: 'Certified Track Graduate'
+            }
+          ]
+        },
+        contact: {
+          tag: 'Get in Touch',
+          title: 'Contact',
+          subtitle: 'Direct communication channels for internship opportunities, technical discussions, and collaborations.',
+          emailLabel: 'Email Address',
+          phoneLabel: 'Phone Number',
+          linkedinLabel: 'LinkedIn Profile',
+          copy: 'Copy',
+          sendEmail: 'Send Email',
+          call: 'Call Direct',
+          viewProfile: 'View Profile'
+        },
+        footer: {
+          rights: '© 2026 Toqa Osama. All rights reserved.',
+          built: 'Designed & developed with React, Tailwind CSS, & Lucide Icons.',
+          backToTop: 'Back to Top'
+        }
+      },
+      ar: {
+        nav: {
+          brand: 'تقى أسامة',
+          about: 'نبذة عني',
+          education: 'التعليم',
+          experience: 'الخبرة والتدريب',
+          practice: 'الممارسة التقنية',
+          skills: 'المهارات',
+          certifications: 'الشهادات',
+          contact: 'تواصل معي',
+          cta: 'تواصل معي'
+        },
+        hero: {
+          roleBadge: 'طالبة علوم حاسب بجامعة القاهرة | مهندسة بيانات واعدة',
+          location: 'الجيزة، مصر',
+          greeting: 'أهلاً بك، أنا',
+          name: 'تقى أسامة',
+          headline: 'علوم الحاسب وهندسة البيانات',
+          bio: 'طالبة علوم حاسب بجامعة القاهرة، شغوفة بهندسة البيانات والبرمجة وحل المشكلات الخوارزمية باستخدام بايثون وC++. أعمل حالياً على تعميق خبرتي في معالجة وهندسة البيانات عبر مبادرة DEPI لتطوير حلول برمجية ذكية وفعالة.',
+          getInTouch: 'تواصل معي',
+          connectLinkedIn: 'حساب لينكد إن',
+          copyEmail: 'نسخ البريد الإلكتروني',
+          comment: '# بناء خطوط معالجة بيانات وحلول خوارزمية موثوقة',
+          statusComment: '# تصميم وتطوير تدفقات البيانات المنظمة'
+        },
+        edu: {
+          tag: 'المسار الأكاديمي',
+          title: 'التعليم الأكاديمي',
+          subtitle: 'أساس متين في علوم الحاسب، التفكير الرياضي، وتصميم البرمجيات.',
+          degree: 'بكالوريوس علوم الحاسب',
+          institution: 'كلية الحاسبات والذكاء الاصطناعي - جامعة القاهرة (FCAI-CU)',
+          period: 'سبتمبر 2025 – حتى الآن',
+          status: 'قيد الدراسة',
+          courseworkTitle: 'أبرز المقررات الدراسية',
+          coursework: ['هياكل البيانات (Data Structures)', 'أساسيات البرمجة (Programming Fundamentals)', 'البرمجة كائنية التوجه (OOP)', 'الرياضيات المتقطعة (Discrete Mathematics)']
+        },
+        exp: {
+          tag: 'التطوير المهني',
+          title: 'التدريب والخبرة المهنية',
+          subtitle: 'تدريب تقني وتطبيقي مكثف عبر المبادرات الرقمية الرائدة في مصر.',
+          role: 'متدربة هندسة بيانات (Data Engineering Trainee)',
+          badge: 'الدفعة الحالية',
+          org: 'مبادرة رواد مصر الرقمية (DEPI)',
+          type: 'مسار تدريبي مكثف',
+          period: 'يوليو 2026 – حتى الآن',
+          desc: 'تم اختياري ضمن مبادرة رواد مصر الرقمية لتدريب الكفاءات الشابة على معايير هندسة البيانات الواقعية ومعالجة البيانات على نطاق واسع.',
+          focusTitle: 'أبرز مجالات التركيز والتدريب العملي',
+          highlights: [
+            'تصميم خطوط أنابيب هندسة البيانات، تنظيم سير العمل، ومفاهيم قواعد البيانات.',
+            'تطبيق عملي في معالجة وتحويل البيانات وأحدث ممارسات تطوير البرمجيات.',
+            'تعزيز التفكير الخوارزمي من خلال منهجيات حل المشكلات البرمجية المنظمة.'
+          ]
+        },
+        tp: {
+          tag: 'الممارسة التطبيقية',
+          title: 'الممارسة التقنية والخوارزميات',
+          subtitle: 'تطبيق عملي متقن لمبادئ البرمجة، حل المسائل الخوارزمية، وهيكلة البرمجيات النظيفة.',
+          cardTitle: 'البرمجة الأساسية والخوارزميات (Python & C++)',
+          badge: 'كفاءة محورية',
+          desc: 'تطبيق منهجي للاستراتيجيات الخوارزمية، كتابة كود عالي الكفاءة، وتحليل المشكلات المعقدة بالاعتماد على بايثون وC++ الحديثة.',
+          highlightsTitle: 'أبرز ملامح الممارسة البرمجية',
+          highlights: [
+            'التطبيق العملي لمفاهيم البرمجة كائنية التوجه (OOP) بما يشمل التجريد، التغليف، الوراثة، وتعدد الأشكال.',
+            'بناء دوال معيارية منظمة وتطبيق مبادئ الكود النظيف القابل لإعادة الاستخدام.',
+            'التحكم الدقيق في البنى المنطقية والشروط والتكرار وتحسين التعقيد الزمني والمكاني.',
+            'تنقيح الأخطاء المنهجي (Debugging)، ومعالجة الاستثناءات، واختبار الحالات الحدية.'
+          ],
+          tagsLabel: 'الوسوم التقنية:',
+          pills: ['Python', 'C++', 'البرمجة كائنية التوجه (OOP)', 'هياكل البيانات', 'التفكير الخوارزمي', 'تنقيح واختبار الكود']
+        },
+        skills: {
+          tag: 'القدرات والمهارات',
+          title: 'تصنيف المهارات',
+          subtitle: 'لغات البرمجة الأساسية، المفاهيم الهندسية، أدوات التطوير، والسمات الشخصية والتحليلية.',
+          groups: [
+            { category: 'لغات البرمجة (Languages)', skills: ['Python', 'C++'] },
+            { category: 'المفاهيم الهندسية (Engineering Concepts)', skills: ['البرمجة كائنية التوجه (OOP)', 'أساسيات هندسة البيانات', 'حل المشكلات البرمجية', 'تنقيح الأخطاء البرمجية (Debugging)'] },
+            { category: 'الأدوات وبيئة العمل (Tools & Environment)', skills: ['VS Code', 'Jupyter Notebook', 'Git / GitHub'] },
+            { category: 'السمات ونقاط القوة (Soft Strengths)', skills: ['التفكير التحليلي', 'سرعة التعلم', 'التواصل التقني الواضح', 'الدقة والاهتمام بالتفاصيل'] }
+          ]
+        },
+        certs: {
+          tag: 'الإنجازات المعتمدة',
+          title: 'الشهادات والمسارات',
+          subtitle: 'إنجازات معتمدة رسمياً من المبادرات الوطنية التابعة لوزارة الاتصالات.',
+          items: [
+            {
+              title: 'المستوى الثاني – المسار العام',
+              track: 'مبادرة أشبال مصر الرقمية (DECI)',
+              issuer: 'وزارة الاتصالات وتكنولوجيا المعلومات (MCIT)',
+              period: 'نوفمبر 2022 – يوليو 2023',
+              badge: 'اجتياز بتميز'
+            },
+            {
+              title: 'المستوى الثالث – مسار الأمن السيبراني',
+              track: 'مبادرة أشبال مصر الرقمية (DECI)',
+              issuer: 'وزارة الاتصالات وتكنولوجيا المعلومات (MCIT)',
+              period: 'نوفمبر 2023 – يوليو 2024',
+              badge: 'خريجة مسار تخصصي'
+            }
+          ]
+        },
+        contact: {
+          tag: 'قنوات التواصل',
+          title: 'تواصل معي',
+          subtitle: 'قنوات مباشرة للتواصل المهني ومناقشة فرص التدريب والمشاريع البرمجية.',
+          emailLabel: 'البريد الإلكتروني',
+          phoneLabel: 'رقم الهاتف',
+          linkedinLabel: 'الملف الشخصي على لينكد إن',
+          copy: 'نسخ',
+          sendEmail: 'إرسال بريد',
+          call: 'اتصال مباشر',
+          viewProfile: 'عرض الملف الشخصي'
+        },
+        footer: {
+          rights: 'جميع الحقوق محفوظة © 2026 تقى أسامة.',
+          built: 'تم التصميم والتطوير باستخدام React و Tailwind CSS وأيقونات Lucide.',
+          backToTop: 'العودة للأعلى'
+        }
+      }
+    };
+
+    let currentLang = 'en';
+    let currentTheme = 'dark';
+
+    function updateLanguageUI() {
+      const data = translations[currentLang];
+      const isRtl = currentLang === 'ar';
+      
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+
+      // Navbar
+      document.getElementById('nav-brand').textContent = data.nav.brand;
+      document.getElementById('nav-link-about').textContent = data.nav.about;
+      document.getElementById('nav-link-education').textContent = data.nav.education;
+      document.getElementById('nav-link-experience').textContent = data.nav.experience;
+      document.getElementById('nav-link-practice').textContent = data.nav.practice;
+      document.getElementById('nav-link-skills').textContent = data.nav.skills;
+      document.getElementById('nav-link-certifications').textContent = data.nav.certifications;
+      document.getElementById('nav-link-contact').textContent = data.nav.contact;
+      document.getElementById('header-cta-text').textContent = data.nav.cta;
+      document.getElementById('lang-btn-text').textContent = isRtl ? 'English' : 'العربية';
+
+      // Hero
+      document.getElementById('hero-role-badge').textContent = data.hero.roleBadge;
+      document.getElementById('hero-location').textContent = data.hero.location;
+      document.getElementById('hero-greeting').textContent = data.hero.greeting;
+      document.getElementById('hero-name').textContent = data.hero.name;
+      document.getElementById('hero-headline').textContent = data.hero.headline;
+      document.getElementById('hero-bio').textContent = data.hero.bio;
+      document.getElementById('hero-action-contact').textContent = data.hero.getInTouch;
+      document.getElementById('hero-action-linkedin').textContent = data.hero.connectLinkedIn;
+      document.getElementById('hero-action-email').textContent = data.hero.copyEmail;
+      document.getElementById('term-comment').textContent = data.hero.comment;
+      document.getElementById('term-status-comment').textContent = data.hero.statusComment;
+
+      // Education
+      document.getElementById('edu-tag').textContent = data.edu.tag;
+      document.getElementById('edu-title').textContent = data.edu.title;
+      document.getElementById('edu-subtitle').textContent = data.edu.subtitle;
+      document.getElementById('edu-degree').textContent = data.edu.degree;
+      document.getElementById('edu-inst').textContent = data.edu.institution;
+      document.getElementById('edu-period').textContent = data.edu.period;
+      document.getElementById('edu-status').textContent = data.edu.status;
+      document.getElementById('edu-coursework-title').textContent = data.edu.courseworkTitle;
+
+      const cwContainer = document.getElementById('edu-coursework-list');
+      cwContainer.innerHTML = data.edu.coursework.map(c => `
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#CBD5E1] dark:border-[#3B3258]">
+          <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>${c}</span>
+        </span>
+      `).join('');
+
+      // Experience
+      document.getElementById('exp-tag').textContent = data.exp.tag;
+      document.getElementById('exp-title').textContent = data.exp.title;
+      document.getElementById('exp-subtitle').textContent = data.exp.subtitle;
+      document.getElementById('exp-role').textContent = data.exp.role;
+      document.getElementById('exp-badge').textContent = data.exp.badge;
+      document.getElementById('exp-org').textContent = data.exp.org;
+      document.getElementById('exp-type').textContent = data.exp.type;
+      document.getElementById('exp-period').textContent = data.exp.period;
+      document.getElementById('exp-desc').textContent = data.exp.desc;
+      document.getElementById('exp-focus-title').textContent = data.exp.focusTitle;
+
+      const expHighlightsContainer = document.getElementById('exp-highlights-grid');
+      expHighlightsContainer.innerHTML = data.exp.highlights.map(h => `
+        <div class="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#12101D] border border-[#E2E8F0] dark:border-[#28243D] hover:border-purple-300 dark:hover:border-purple-800 transition-colors flex items-start gap-3">
+          <div class="mt-0.5 p-1.5 rounded-lg bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA] flex-shrink-0">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="16 10 12 14 8 10"></polyline></svg>
+          </div>
+          <p class="text-xs sm:text-sm text-[#334155] dark:text-[#CBD5E1] leading-relaxed font-medium">${h}</p>
+        </div>
+      `).join('');
+
+      // Technical Practice
+      document.getElementById('tp-tag').textContent = data.tp.tag;
+      document.getElementById('tp-title').textContent = data.tp.title;
+      document.getElementById('tp-subtitle').textContent = data.tp.subtitle;
+      document.getElementById('tp-card-title').textContent = data.tp.cardTitle;
+      document.getElementById('tp-card-badge').textContent = data.tp.badge;
+      document.getElementById('tp-desc').textContent = data.tp.desc;
+      document.getElementById('tp-highlights-title').textContent = data.tp.highlightsTitle;
+      document.getElementById('tp-tags-label').textContent = data.tp.tagsLabel;
+
+      const tpHighlightsContainer = document.getElementById('tp-highlights-grid');
+      tpHighlightsContainer.innerHTML = data.tp.highlights.map(h => `
+        <div class="p-4 rounded-xl bg-[#F8FAFC] dark:bg-[#12101D] border border-[#E2E8F0] dark:border-[#28243D] flex items-start gap-3 hover:border-purple-300 dark:hover:border-purple-800 transition-colors">
+          <div class="mt-0.5 p-1.5 rounded-lg bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA] flex-shrink-0">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <p class="text-xs sm:text-sm text-[#334155] dark:text-[#CBD5E1] leading-relaxed font-medium">${h}</p>
+        </div>
+      `).join('');
+
+      const tpPillsContainer = document.getElementById('tp-pills-container');
+      tpPillsContainer.innerHTML = data.tp.pills.map(p => `
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258]">
+          <span class="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-purple-400"></span>
+          <span>${p}</span>
+        </span>
+      `).join('');
+
+      // Skills
+      document.getElementById('skills-tag').textContent = data.skills.tag;
+      document.getElementById('skills-title').textContent = data.skills.title;
+      document.getElementById('skills-subtitle').textContent = data.skills.subtitle;
+
+      const skillsGrid = document.getElementById('skills-grid');
+      skillsGrid.innerHTML = data.skills.groups.map(g => `
+        <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div class="flex items-center gap-3.5 mb-5">
+            <div class="p-3 rounded-2xl bg-[#EDE9FE] text-[#5B21B6] dark:bg-[#1E1A33] dark:text-[#A78BFA] border border-[#DDD6FE] dark:border-[#3B3258] group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-[#0F172A] dark:text-white">${g.category}</h3>
+              <p class="text-xs font-semibold text-[#475569] dark:text-[#94A3B8]">${g.skills.length} core proficiencies</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2.5">
+            ${g.skills.map(s => `
+              <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#CBD5E1] dark:border-[#3B3258] hover:border-purple-400 dark:hover:border-purple-600 transition-all shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-purple-400"></span>
+                <span>${s}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      // Certifications
+      document.getElementById('certs-tag').textContent = data.certs.tag;
+      document.getElementById('certs-title').textContent = data.certs.title;
+      document.getElementById('certs-subtitle').textContent = data.certs.subtitle;
+
+      const certsGrid = document.getElementById('certs-grid');
+      certsGrid.innerHTML = data.certs.items.map(cert => `
+        <div class="rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#171523] border border-[#E2E8F0] dark:border-[#28243D] shadow-sm hover:shadow-md transition-all duration-300 relative group overflow-hidden">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#6D28D9] to-[#7C3AED] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#EDE9FE] text-[#5B21B6] border border-[#DDD6FE] dark:bg-[#1E1A33] dark:text-[#A78BFA] dark:border-[#3B3258]">
+              <svg class="w-3.5 h-3.5 text-[#6D28D9] dark:text-[#A78BFA]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>${cert.badge}</span>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-[#0F172A] dark:text-white leading-snug">${cert.title}</h3>
+            <p class="text-sm font-bold text-[#5B21B6] dark:text-[#A78BFA]">${cert.track}</p>
+            <p class="text-xs font-semibold text-[#475569] dark:text-[#94A3B8]">${cert.issuer}</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[#E2E8F0] dark:border-[#28243D] flex items-center justify-between text-xs font-semibold text-[#334155] dark:text-[#CBD5E1]">
+            <div class="inline-flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>${cert.period}</span>
+            </div>
+            <span class="font-mono text-[11px] uppercase tracking-wider text-[#5B21B6] dark:text-[#A78BFA] font-bold">DECI Certified</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Contact
+      document.getElementById('contact-tag').textContent = data.contact.tag;
+      document.getElementById('contact-title').textContent = data.contact.title;
+      document.getElementById('contact-subtitle').textContent = data.contact.subtitle;
+      document.getElementById('contact-email-lbl').textContent = data.contact.emailLabel;
+      document.getElementById('contact-phone-lbl').textContent = data.contact.phoneLabel;
+      document.getElementById('contact-linkedin-lbl').textContent = data.contact.linkedinLabel;
+      document.getElementById('contact-email-btn-text').textContent = data.contact.sendEmail;
+      document.getElementById('contact-call-btn-text').textContent = data.contact.call;
+      document.getElementById('contact-linkedin-btn-text').textContent = data.contact.viewProfile;
+      document.querySelectorAll('.copy-email-btn-text').forEach(el => el.textContent = data.contact.copy);
+      document.querySelectorAll('.copy-phone-btn-text').forEach(el => el.textContent = data.contact.copy);
+
+      // Footer
+      document.getElementById('footer-rights').textContent = data.footer.rights;
+      document.getElementById('footer-built').textContent = data.footer.built;
+      document.getElementById('footer-back-to-top').textContent = data.footer.backToTop;
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      updateLanguageUI();
+    }
+
+    function toggleTheme() {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      const root = document.documentElement;
+      const body = document.body;
+      const sunIcon = document.getElementById('theme-icon-sun');
+      const moonIcon = document.getElementById('theme-icon-moon');
+
+      if (currentTheme === 'dark') {
+        root.classList.add('dark');
+        root.classList.remove('light');
+        body.classList.remove('bg-[#F8FAFC]', 'text-[#0F172A]');
+        body.classList.add('bg-[#0B0B10]', 'text-slate-100');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        root.classList.remove('dark');
+        root.classList.add('light');
+        body.classList.remove('bg-[#0B0B10]', 'text-slate-100');
+        body.classList.add('bg-[#F8FAFC]', 'text-[#0F172A]');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    function copyToClipboard(text, type) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast-banner');
+        const toastText = document.getElementById('toast-text');
+        toastText.textContent = currentLang === 'ar' 
+          ? (type === 'email' ? 'تم نسخ البريد الإلكتروني!' : 'تم نسخ رقم الهاتف!')
+          : (type === 'email' ? 'Email copied to clipboard!' : 'Phone copied to clipboard!');
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 2500);
+      }).catch(() => {
+        alert('Copied: ' + text);
+      });
+    }
+
+    // Initialize
+    updateLanguageUI();
+  </script>
+</body>
+</html>
